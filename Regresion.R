@@ -7,6 +7,8 @@ ventas <- c(58,105,88,118,117,137,157,169,149,202)
 datos <- data.frame(restaurantes,estudiantes,ventas)
 datos
 
+#diagrama de dispersion_____________________________________
+
 plot(datos$estudiantes, datos$ventas,
      xlab = "Estudiantes",
      ylab = "Ventas $",
@@ -25,3 +27,18 @@ ggplot() + geom_point(data = datos, aes(x = estudiantes, y = ventas), size = 0.9
   xlab("Estudiantes") + 
   ylab("Ventas") + 
   ggtitle("Linea de tendencia sobre Conjunto de Datos")
+
+
+#predicción de valores determinados en un vector 
+
+a.coef.intercepcion = modelo$coefficients[1]
+b.pendiente = modelo$coefficients[2]
+y.prediccion <- a.coef.intercepcion + b.pendiente * c(16, 32, 64, 96)
+# Las predicciones son:
+y.prediccion
+ 
+#INTERPRETACIÓN DEL MODELO
+summary(modelo)
+#---------------------------------
+
+
