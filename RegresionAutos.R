@@ -52,9 +52,26 @@ summary(modelo)
 
 #se grafican valores residuales
 boxplot(modelo$residuals)
+
 datosentrenamiento <- datos[entrena, -c(1,8,9)]
 
 datosvalidacion <- datos[-entrena, -c(1,8,9)]
 
 # Veremos que no son los mis datos los de entrenamiento y los datos de validación
 head(datos)
+
+
+
+sqrt(mean((modelo$fitted.values - datosentrenamiento$mpg) ^ 2))
+
+#Evaluar con los datos de validación que no serán los de entrenamiento
+mpg_prediccion <- predict(modelo, datosvalidacion) 
+
+
+#ERROR CUANTICO MEDIO
+sqrt(mean((mpg_prediccion - datosvalidacion$mpg) ^ 2))
+
+
+par(mfrow=c(2,2))
+plot(modelo)
+
